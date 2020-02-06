@@ -1,0 +1,42 @@
+clc; clear all;
+load sunspot.dat;
+
+figure
+plot(sunspot(:,1), sunspot(:,2))
+grid on
+title('Sunspot data')
+xlabel('Time (year)') 
+
+demean_sunspot = sunspot(:,2) - mean(sunspot(:,2));
+detrend_sunspot = detrend(sunspot(:,2));
+
+figure 
+plot(sunspot(:,1), demean_sunspot)
+grid on
+title('Sunspot - mean')
+xlabel('Time (year)') 
+
+figure
+plot(sunspot(:,1), detrend_sunspot)
+grid on
+title('Sunspot Detrend')
+xlabel('Time (year)') 
+
+%whats the difference between different autocorrelation function call?
+
+figure
+trend = sunspot(:,2) - detrend_sunspot;
+plot(sunspot(:,1), trend)
+grid on
+title('Trend of Sunspot')
+xlabel('Time (year)') 
+
+
+log_sunspot = arrayfun(@(x) log(x), sunspot(:,2));
+
+figure
+plot(sunspot(:,1), log_sunspot, sunspot(:,1), sunspot(:,2))
+legend({'y = sin(x)','y = cos(x)'},'Location','southwest')
+grid on
+title('Log of Sunspot')
+xlabel('Time (year)') 
