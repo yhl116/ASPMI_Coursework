@@ -1,7 +1,6 @@
 clc; clear all;
 load sunspot.dat;
 
-
 demean_sunspot = sunspot(:,2) - mean(sunspot(:,2));
 detrend_sunspot = detrend(sunspot(:,2));
 
