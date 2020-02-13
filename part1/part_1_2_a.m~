@@ -1,0 +1,27 @@
+clc; clear all;
+load sunspot.dat;
+
+demean_sunspot = sunspot(:,2) - mean(sunspot(:,2));
+detrend_sunspot = detrend(sunspot(:,2));
+trend = sunspot(:,2) - detrend_sunspot;
+log_sunspot = 10*log10(sunspot(:,2));
+
+[sunspot_periodogram, w1] = periodogram(sunspot(:,2));
+[detrend_periodogram, w2] = periodogram(detrend_sunspot);
+[demean_periodogram,w3] = periodogram(demean_sunspot);
+
+figure
+subplot(1,2,1)
+hold on 
+axis([0 1 -50 50])
+plot(w1/max(w1), 10*log10(sunspot_periodogram))
+plot(w2/max(w2), 10*log10(detrend_periodogram))
+plot(w3/max(w3), 10*log10(demean_periodogram))
+title('Log of Sunspot')
+xlabel('Time (year)') 
+legend({'sunspot','detrend sunspot', })
+grid on
+
+
+subplot(1,2,2)
+plot(w1/max(w1), 10*log10(sunspot_periodogram))
