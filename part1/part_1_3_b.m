@@ -13,3 +13,6 @@ wgn = randn(1,1000);
 filtered_wgn = filter([1,1,1,1,1,1,1,1,1], 1, wgn);
 noisy_sine = sine + wgn;
 
+for i = 1:length(A)
+       disp(A(i))
+end

@@ -13,21 +13,71 @@ wgn = randn(1,1000);
 filtered_wgn = filter([1,1,1,1,1,1,1,1,1], 1, wgn);
 noisy_sine = sine + wgn;
 
-figure
-subplot(3,2,1)
-plot(wgn)
-
-subplot(3,2,3)
-plot(filtered_wgn)
-
-subplot(3,2,5)
-plot(noisy_sine)
-
 [wgn_biased_r, wgn_biased_lag, wgn_biased_Pxx, wgn_biased_fs] = corr_est(wgn,'biased');
 [wgn_unbiased_r, wgn_unbiased_lag, wgn_unbiased_Pxx, wgn_unbiased_fs] = corr_est(wgn,'unbiased');
 
-subplot(3,2,2)
+[sine_biased_r, sine_biased_lag, sine_biased_Pxx, sine_biased_fs] = corr_est(noisy_sine,'biased');
+[sine_unbiased_r, sine_unbiased_lag, sine_unbiased_Pxx, sine_unbiased_fs] = corr_est(noisy_sine,'unbiased');
 
+[filtered_wgn_biased_r, filtered_wgn_biased_lag, filtered_wgn_biased_Pxx, filtered_wgn_biased_fs] = corr_est(filtered_wgn,'biased');
+[filtered_wgn_unbiased_r, filtered_wgn_unbiased_lag, filtered_wgn_unbiased_Pxx, filtered_wgn_unbiased_fs] = corr_est(filtered_wgn,'unbiased');
+
+subplot(3,2,1)
+plot(wgn_unbiased_lag, wgn_unbiased_r)
+hold on
+plot(wgn_biased_lag, wgn_biased_r)
+% axis([0 60 -160 -90]);
+title('WGN: ACF')
+xlabel('Lag')
+ylabel('Autocorrelation Coefficient')
+legend({'Unbiased','Biased'})
+
+subplot(3,2,2)
 plot(wgn_unbiased_fs, wgn_unbiased_Pxx)
 hold on
 plot(wgn_biased_fs, wgn_biased_Pxx)
+% axis([0 60 -160 -90]);
+title('WGN: Correlogram')
+xlabel('Normalised Frequency')
+ylabel('Power')
+legend({'Unbiased','Biased'})
+
+subplot(3,2,3)
+plot(sine_unbiased_lag, sine_unbiased_r)
+hold on
+plot(sine_biased_lag, sine_biased_r)
+% axis([0 60 -160 -90]);
+title('Noisy Sinewave: ACF')
+xlabel('Lag')
+ylabel('Autocorrelation Coefficient')
+legend({'Unbiased','Biased'})
+
+subplot(3,2,4)
+plot(sine_unbiased_fs, sine_unbiased_Pxx)
+hold on
+plot(sine_biased_fs, sine_biased_Pxx)
+% axis([0 60 -160 -90]);
+title('Noisy Sinewave: Correlogram')
+xlabel('Normalised Frequency')
+ylabel('Power')
+legend({'Unbiased','Biased'})
+
+subplot(3,2,5)
+plot(filtered_wgn_unbiased_lag, filtered_wgn_unbiased_r)
+hold on
+plot(filtered_wgn_biased_lag, filtered_wgn_biased_r)
+% axis([0 60 -160 -90]);
+title('Filtered WGN: ACF')
+xlabel('Lag')
+ylabel('Autocorrelation Coefficient')
+legend({'Unbiased','Biased'})
+
+subplot(3,2,6)
+plot(filtered_wgn_unbiased_fs, filtered_wgn_unbiased_Pxx)
+hold on
+plot(filtered_wgn_biased_fs, filtered_wgn_biased_Pxx)
+% axis([0 60 -160 -90]);
+title('Filtered WGN: Correlogram')
+xlabel('Normalised Frequency')
+ylabel('Power')
+legend({'Unbiased','Biased'})
