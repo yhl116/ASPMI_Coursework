@@ -1,6 +1,6 @@
 clc; clear all;
 coeff = [2.76, -3.81, 2.65, -0.92];
-N = 1000;
+N = 10000;
 
 model = arima('constant', 0, 'AR', coeff, 'variance', 1);
 x = simulate(model,N);
@@ -11,11 +11,11 @@ p_4 = aryule(x,4);
 p_8 = aryule(x,8);
 p_14 = aryule(x,14);
 
-[h_ideal, w_ideal] = freqz(1, [1 -coeff],500);
-[h_2, ~] = freqz(1, p_2,500);
-[h_4, ~] = freqz(1, p_4,500);
-[h_8, ~] = freqz(1, p_8,500);
-[h_14, ~] = freqz(1, p_14,500);
+[h_ideal, w_ideal] = freqz(1, [1 -coeff],9500);
+[h_2, ~] = freqz(1, p_2,9500);
+[h_4, ~] = freqz(1, p_4,9500);
+[h_8, ~] = freqz(1, p_8,9500);
+[h_14, ~] = freqz(1, p_8,9500);
 
 figure
 title('Log of PSD Estimate of Noisy Sinewave')
@@ -30,4 +30,8 @@ ylabel('Power')
 grid on
 legend({'ideal','p = 2', 'p = 4', 'p = 8', 'p = 14'})
 
+figure
+plot(w_ideal, abs(h_8));
 
+figure
+plot(w_ideal, abs(h_8));
