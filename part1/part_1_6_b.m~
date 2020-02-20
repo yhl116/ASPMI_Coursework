@@ -1,0 +1,5 @@
+clc; clear all;
+load('PCAPCR.mat');
+load('font_size.mat')
+
+B_ols = inv(X')

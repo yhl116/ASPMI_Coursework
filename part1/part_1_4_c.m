@@ -19,19 +19,13 @@ p_14 = aryule(x,14);
 
 figure
 title('Log of PSD Estimate of Noisy Sinewave')
-plot(w_ideal, abs(h_ideal));
+plot(w_ideal, 10*log10(abs(h_ideal)));
 hold on
-plot(w_ideal, abs(h_2));
-plot(w_ideal, abs(h_4));
-plot(w_ideal, abs(h_8));
-plot(w_ideal, abs(h_14));
+plot(w_ideal, 10*log10(abs(h_2)));
+plot(w_ideal, 10*log10(abs(h_4)));
+plot(w_ideal, 10*log10(abs(h_8)));
+plot(w_ideal, 10*log10(abs(h_14)));
 xlabel('Normalised Frequency')
 ylabel('Power')
 grid on
 legend({'ideal','p = 2', 'p = 4', 'p = 8', 'p = 14'})
-
-figure
-plot(w_ideal, abs(h_8));
-
-figure
-plot(w_ideal, abs(h_ideal));
