@@ -1,4 +1,5 @@
 clc; clear all;
+load('font_size.mat')
 coeff = [2.76, -3.81, 2.65, -0.92];
 N = 10000;
 
