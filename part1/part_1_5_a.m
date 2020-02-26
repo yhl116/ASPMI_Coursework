@@ -58,7 +58,7 @@ xlabel('Normalised Frequency','FontSize',x_label_font_size)
 ylabel('Power (dB)','FontSize',y_label_font_size)
 
 subplot(1,3,3)
-plot(w/max(w), 10*log10(pxx_3_std))
+plot(w, 10*log10(pxx_3_std))
 grid on;
 % axis([0 2 -100 0]);
 title('Standard Periodogram, Trial 3','FontSize',title_font_size)

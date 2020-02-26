@@ -63,7 +63,7 @@ plot(w1/max(w1),10*log10(pxx_1_std))
 title('ECG Periodogram, Prediction vs Actual, Trial 1','FontSize',title_font_size)
 xlabel('Normalised Frequency','FontSize',x_label_font_size)
 ylabel('Power (dB)','FontSize',y_label_font_size)
-legend({'prediction: p = 1', 'prediction: p = 2', 'prediction: p = 5', 'ideal'},'Location','northeast','FontSize',11)
+legend({'prediction: p = 1', 'prediction: p = 5', 'prediction: p = 20', 'ideal'},'Location','northeast','FontSize',11)
 grid on
 
 % figure
@@ -76,7 +76,7 @@ plot(w2/max(w2),10*log10(pxx_2_std))
 title('ECG Periodogram, Prediction vs Actual, Trial 2','FontSize',title_font_size)
 xlabel('Normalised Frequency','FontSize',x_label_font_size)
 ylabel('Power (dB)','FontSize',y_label_font_size)
-legend({'prediction: p = 1', 'prediction: p = 2', 'prediction: p = 5', 'ideal'},'Location','northeast','FontSize',11)
+legend({'prediction: p = 1', 'prediction: p = 5', 'prediction: p = 20', 'ideal'},'Location','northeast','FontSize',11)
 grid on
 
 % figure
@@ -89,7 +89,7 @@ plot(w3/max(w3),10*log10(pxx_3_std))
 title('ECG Periodogram, Prediction vs Actual, Trial 3','FontSize',title_font_size)
 xlabel('Normalised Frequency','FontSize',x_label_font_size)
 ylabel('Power (dB)','FontSize',y_label_font_size)
-legend({'prediction: p = 1', 'prediction: p = 2', 'prediction: p = 5', 'ideal'},'Location','northeast','FontSize',11)
+legend({'prediction: p = 1', 'prediction: p = 5', 'prediction: p = 20', 'ideal'},'Location','northeast','FontSize',11)
 grid on
 
 saveas(gcf,'part1/images/1_5_c.png')

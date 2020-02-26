@@ -38,7 +38,7 @@ coeff = [2.76, -3.81, 2.65, -0.92];
 N = 10000;
 model = arima('constant', 0, 'AR', coeff, 'variance', 1);
 x = simulate(model,N);
-x = x(500:end);
+x = x(501:end);
 
 p_2 = aryule(x,2);
 p_4 = aryule(x,4);
