@@ -16,7 +16,7 @@ function [x_hat, error, w] = lms_gass(x_ma, noise, rho, order, method)
 
             phi = error_pad(i-1) * noise_pad(i-2:-1:i-order-1);
             mu_pad(i+1) = mu_pad(i) + rho * error_pad(i) * x_vec'* phi;
-            a = mu_pad(i)*error_pad(i)*x_vec;
+%             a = mu_pad(i)*error_pad(i)*x_vec;
             w(:, i+1) = w(:, i) + mu_pad(i)*error_pad(i)*x_vec;
         end
         
@@ -28,7 +28,7 @@ function [x_hat, error, w] = lms_gass(x_ma, noise, rho, order, method)
             error_pad(i) = x_pad(i) - x_hat_pad(i);
 
             mu_pad(i+1) = mu_pad(i) + rho * error_pad(i) * x_vec'* phi;
-            a = mu_pad(i)*error_pad(i)*x_vec;
+%             a = mu_pad(i)*error_pad(i)*x_vec;
             w(:, i+1) = w(:, i) + mu_pad(i)*error_pad(i)*x_vec;
             phi = alpha*phi + error_pad(i)*noise_pad(i-1:-1:i-order);
         end
@@ -40,7 +40,7 @@ function [x_hat, error, w] = lms_gass(x_ma, noise, rho, order, method)
             error_pad(i) = x_pad(i) - x_hat_pad(i);
             
             mu_pad(i+1) = mu_pad(i) + rho * error_pad(i) * x_vec'* phi;
-            a = mu_pad(i)*error_pad(i)*x_vec;
+%             a = mu_pad(i)*error_pad(i)*x_vec;
             w(:, i+1) = w(:, i) + mu_pad(i)*error_pad(i)*x_vec;
             phi = (eye(order) - mu_pad(i) * noise_pad(i-1:-1:i-order) * noise_pad(i-1:-1:i-order).') * phi + error_pad(i) * noise_pad(i-1:-1:i-order);
         end

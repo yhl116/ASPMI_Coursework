@@ -1,0 +1,22 @@
+clear all; clc;
+load('time-series.mat')
+
+y_detrend = detrend(y);
+y_demean = y - mean(y);
+
+mu = 10^-5;
+order = 4;
+
+[x_hat, error, w] = lms_ar(y_demean, mu, order);
+
+figure
+plot(y_demean)
+hold on
+plot(x_hat)
+legend(["x_hat","y_mean"])
+
+mse = sum(error.^2)/length(error);
+Rp = 10*log10(var(x_hat)/var(error));
+
+%question2
+

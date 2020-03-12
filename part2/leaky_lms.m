@@ -1,4 +1,4 @@
-function [x_hat, error, w] = lms_ar(x, order, rho, method)
+function [x_hat, error, w] = leaky_lms(x, mu, order, gamma)
     N = length(x);
     w = zeros(order, N);
     x_hat = zeros(N, 1);
