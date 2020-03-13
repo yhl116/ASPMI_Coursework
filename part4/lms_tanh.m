@@ -1,4 +1,4 @@
-function [x_hat, error, w] = lms_ar(x, mu, order,a)
+function [x_hat, error, w] = lms_tanh(x, mu, order,a)
     N = length(x);
     w = zeros(order, N);
     x_hat = zeros(N, 1);

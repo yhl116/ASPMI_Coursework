@@ -1,9 +1,8 @@
-function [x_hat, error, w] = lms_tanh_bias(x, mu, order,a)
+function [x_hat, error, w] = train_20(x, x_hat, w, error, mu, order,a)
     N = length(x);
-    w = zeros(order+1, N);
     x_hat = zeros(N, 1);
     error = zeros(N, 1);
-    
+
     % error(1)  = x(1) - x_hat(1)
     %           = x(1) - w(1)*x_vec(1)
     %           = x(1)  because w(1) = 0
@@ -18,7 +17,7 @@ function [x_hat, error, w] = lms_tanh_bias(x, mu, order,a)
         w(:, i+1) = w(:, i) + (mu * error(i) * x_vec).';
     end
 
-    for i = order+1:N
+    for i = order+1:20
         x_vec = [1;x(i-1:-1:i-order)];
         x_hat(i) = a*tanh((w(:, i).') * x_vec);
         error(i) = x(i) - x_hat(i);

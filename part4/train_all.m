@@ -1,9 +1,8 @@
-function [x_hat, error, w] = lms_tanh_bias(x, mu, order,a)
+function [x_hat, error, w] = train_all(x, x_hat, w, error, mu, order,a)
     N = length(x);
-    w = zeros(order+1, N);
     x_hat = zeros(N, 1);
     error = zeros(N, 1);
-    
+
     % error(1)  = x(1) - x_hat(1)
     %           = x(1) - w(1)*x_vec(1)
     %           = x(1)  because w(1) = 0
