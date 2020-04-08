@@ -1,13 +1,17 @@
-function [e, h, g] = ACLMS(x,y,mu,N)
-order = 2;
-h = zeros(order, N);
-g = zeros(order, N);  
-    for n = order:N
-        x1 = [x(n);x(n-1)];
-        x1_conj = [conj(x(n));conj(x(n-1))];
-        y_hat(n) = h(:,n)'*x1 + g(:,n)'*x1_conj;
-        e(n) = y(n) - y_hat(n);  
-        h(:,n+1) = h(:,n) + mu*conj(e(n))*x1;
-        g(:,n+1) = g(:,n) + mu*conj(e(n))*x1_conj;
-    end 
+function [y_hat, e, h_coeffs,g_coeffs] = aclms(y, w, mu, order)
+    N = length(w);
+    h_coeffs = complex(zeros(order+1,N));
+    g_coeffs = complex(zeros(order+1,N));
+    y_hat = complex(zeros(1,N));
+    e = complex(zeros(N,1));
+    
+    for i = 1:N
+      x_current = get_inputs(w,order,i);
+      y_hat(i)= h_coeffs(:,i)'*x_current + g_coeffs(:,i)'*conj(x_current);     
+      e(i) = y(i) - y_hat(i);  
+      h_coeffs(:,i+1) = h_coeffs(:,i) + mu*conj(e(i))*x_current;
+      g_coeffs(:,i+1) = g_coeffs(:,i) + mu*conj(e(i))*conj(x_current);
+    end
+    
+    coeffs = [h_coeffs;g_coeffs];
 end

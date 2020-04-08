@@ -1,10 +1,13 @@
-function [e, h] = CLMS(x,y,mu,N)
-order = 2;
-h = zeros(order, N);
-   for n = order:N
-        x1 = [x(n);x(n-1)];
-        y_hat(n) = h(:,n)'*x1;
-        e(n) = y(n) - y_hat(n);  
-        h(:,n+1) = h(:,n) + mu*conj(e(n))*x1;
-    end 
+function [y_hat, e, h_coeffs] = clms(y, w, mu, order)
+    N = length(w);
+    h_coeffs = complex(zeros(order+1,N));
+    y_hat = complex(zeros(1,N));
+    e = complex(zeros(N,1));
+    
+    for i = 1:N
+      x_current = get_inputs(w,order,i);
+      y_hat(i)= h_coeffs(:,i)'*x_current ;     
+      e(i) = y(i) - y_hat(i);  
+      h_coeffs(:,i+1) = h_coeffs(:,i) + mu*conj(e(i))*x_current;
+    end
 end
