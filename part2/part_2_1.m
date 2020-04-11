@@ -95,7 +95,7 @@ axis([700 1000 -30 -20]);
 legend({'Signal','Mean of signal accross time'},'FontSize',legend_font_size,'Location','northeast')
 grid on
 
-saveas(gcf,'images/2_1_c.png')
+% saveas(gcf,'images/2_1_c.png')
 
 a_1_5_realisation_mean = mean(w_realisations_5(1,:,:),3);
 a_2_5_realisation_mean = mean(w_realisations_5(2,:,:),3);

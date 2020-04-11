@@ -9,7 +9,6 @@ sd = sqrt(noise_variance);
 noise = sd*randn(N, realisation);
 order = 1;
 
-% w initialisation
 w_ben = zeros(order,N+1, realisation);
 w_af = zeros(order,N+1, realisation);
 w_mx = zeros(order,N+1, realisation);
@@ -51,3 +50,9 @@ legend({'Benveniste','Ang & Farhang', 'Matthews & Xie','LMS, mu = 0.01','LMS, mu
 grid on
 
 saveas(gcf,'images/2_2_a.png')
+
+ben_ss = mean(ben_mean(900:1000));
+af_ss = mean(af_mean(900:1000));
+mx_ss = mean(mx_mean(900:1000));
+std_ss = mean(std_mean(900:1000));
+std_ss_2 = mean(std_mean_2(900:1000));

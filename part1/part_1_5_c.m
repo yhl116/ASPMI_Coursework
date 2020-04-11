@@ -4,9 +4,9 @@ load ('trials.mat')
 title_font_size = 12;
 nfft = fs*5;         %from hint to have 5 DFT samples per Hz 
 noverlap = 0;
-% load('Nathan_Reading1')
-% load('Nathan_Reading2')
-% load('Nathan_Reading3')
+% load('Reading1')
+% load('Reading2')
+% load('Reading3')
 % 
 % [xRRI_1, fsRRI_1] = ECG_to_RRI(reading1, fs);
 % [xRRI_2, fsRRI_2] = ECG_to_RRI(reading2, fs);

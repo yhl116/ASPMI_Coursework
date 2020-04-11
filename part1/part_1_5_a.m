@@ -1,8 +1,8 @@
 clc; clear all;
 load('font_size.mat')
-% load('Nathan_Reading1')
-% load('Nathan_Reading2')
-% load('Nathan_Reading3')
+% load('Reading1')
+% load('Reading2')
+% load('Reading3')
 
 % [xRRI_1, fsRRI_1] = ECG_to_RRI(reading1, fs);
 % [xRRI_2, fsRRI_2] = ECG_to_RRI(reading2, fs);
